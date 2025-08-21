@@ -1,3 +1,6 @@
+//Lista para melhorias:
+//1ºIntegrar o sistema de tempo faltando de um outro projéto meu para cá.
+
 #include <stdio.h>
 
 #define max_letras 5600
@@ -6,9 +9,9 @@
 typedef struct{
     
     char descrição[max_letras];
+    char data[max_letras];
     int minutos;
     int horas;
-    int data;
     
 }compromisso;
 
@@ -36,20 +39,41 @@ int main(){
 
         switch(escolha){
             case 1:
-                if(total_compromissos >= max_compromissos)
-                printf("O número máximo de compromissos foi atingido!")
+                if(total_compromissos >= max_compromissos){
+                    printf("\nO número máximo de compromissos foi atingido!\n\n");
+                    break;
+                }else{
+
+                printf("O número máximo de compromissos foi atingido!");
                 printf("\nMarcar compromisso iniciado!\n\n");
                 printf("Descrição:");
-                fgets(compromisso)
+                fgets(compromisso[max_compromissos].descrição, max_letras, stdin);
+                
+                printf("Data:");
+                fgets(compromisso[max_compromissos].data, max_letras, stdin);
 
+                printf("Horas(minutos no próximo campo):");
+                fgets(compromisso[max_compromissos].horas, max_letras, stdin);
 
+                printf("Minutos:");
+                fgets(compromisso[max_compromissos].minutos, max_letras, stdin);
 
+                printf("\nCompromisso agendado com sucesso!\n\n");
+                }
+            case 2:
 
-
-
-
-
-
+                if(total_compromissos == 0){
+                    printf("Não há compromissos agendados :(");
+                    break;
+                }else{
+                    printf("\nAgenda de compromissos\n\n");
+                    for(int i = 0; i < total_compromissos; i++){
+                        printf("%s às %d:%d\n", compromisso[max_compromissos].data,
+                        compromisso[max_compromissos].horas, 
+                        compromisso[max_compromissos].minutos);
+                        printf("%s\n\n", compromisso[max_compromissos].descrição);
+                    }
+                }
 
 
         }
