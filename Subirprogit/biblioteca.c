@@ -11,13 +11,16 @@ typedef struct{
 
 }livro;
 
+void LimparBufferEntrada() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+    }
+
 int main(){
 
-    livro biblioteca;
+    livro biblioteca[max_livros];
     int escolha = 0;
     int total_livros = 0;
-
-    
 
     do{
 
@@ -28,31 +31,43 @@ int main(){
     printf("Resposta:");
     
     scanf("%d", &escolha);
-    getchar();
+    LimparBufferEntrada();
 
     switch(escolha){
         case 1:
-        printf("O cadastro de livro foi iniciado.\n\n");
+        printf("\nO cadastro de livro foi iniciado.\n\n");
         if(total_livros >= max_livros){
             printf("Limite de livros atingido.\n");
         } else {
         printf("Qual o nome do livro?\nresposta:");
-        fgets(biblioteca.nome, max_letras, stdin);
+        fgets(biblioteca[total_livros].nome, max_letras, stdin);
         
         printf("Qual o nome do autor?\nresposta:");
-        fgets(biblioteca.autor, max_letras, stdin);
+        fgets(biblioteca[total_livros].autor, max_letras, stdin);
         
         printf("Qual a cor da capa do livro?\nresposta:");
-        fgets(biblioteca.cor, max_letras, stdin);
+        fgets(biblioteca[total_livros].cor, max_letras, stdin);
         
-        printf("Livro cadastrado com sucesso!\n\n");
+        printf("\nLivro cadastrado com sucesso!\n\n");
         total_livros++;
         }
+        break;
         case 2:
-        printf("Lista ")
         
+        if(total_livros == 0){
+            printf("\nNão há livros registrados!\n\n");
+        }else{
+            
+            printf("Lista de livros\n\n");
 
-        
+        for(int i=0; i < total_livros; i++){
+            printf("Nome: %s", biblioteca[i].nome);
+            printf("Autor: %s", biblioteca[i].autor);
+            printf("Cor: %s\n", biblioteca[i].cor);
+                }
+
+            }
+        break;
         }
     }while (escolha != 0);
 
