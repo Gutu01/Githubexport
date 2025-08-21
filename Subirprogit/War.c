@@ -1,3 +1,10 @@
+//O jogo ainda não está pronto.
+//
+//Lista para melhorias:
+//1º Fazer as entrada "a prova" de erros
+//2º Melhorar os menus
+//3º Fazer comentários
+
 #include <stdio.h>
 #include <string.h>
 
