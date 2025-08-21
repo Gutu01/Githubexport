@@ -22,7 +22,7 @@ void limparbufferentrada(){
 
 int main(){
 
-    compromisso compromisso[max_compromissos];
+    compromisso agenda[max_compromissos];
     int total_compromissos=0;
     int escolha;
 
@@ -30,8 +30,8 @@ int main(){
 
         printf("Escolha uma opção\n");
         printf("0-Sair\n");
-        printf("1-Marcar compromisso\n");
-        printf("2-Vercompromissos\n");
+        printf("1-Agendar compromisso\n");
+        printf("2-Ver compromissos\n");
         printf("Resposta:");
         scanf("%d", &escolha);
         limparbufferentrada();
@@ -43,35 +43,43 @@ int main(){
                     printf("\nO número máximo de compromissos foi atingido!\n\n");
                     break;
                 }else{
-
-                printf("O número máximo de compromissos foi atingido!");
-                printf("\nMarcar compromisso iniciado!\n\n");
+                printf("\nAgendamento de compromisso iniciado!\n\n");
                 printf("Descrição:");
-                fgets(compromisso[max_compromissos].descrição, max_letras, stdin);
-                
+                fgets(agenda[total_compromissos].descrição, max_letras, stdin);
+                agenda[total_compromissos].descrição[strcspn(agenda[total_compromissos].descrição
+                , "\n")] = '\0';
+
                 printf("Data:");
-                fgets(compromisso[max_compromissos].data, max_letras, stdin);
+                fgets(agenda[total_compromissos].data, max_letras, stdin);
+                agenda[total_compromissos].data[strcspn(agenda[total_compromissos].data
+                , "\n")] = '\0';
 
                 printf("Horas(minutos no próximo campo):");
-                fgets(compromisso[max_compromissos].horas, max_letras, stdin);
+                scanf("%d", &agenda[total_compromissos].horas);
+                limparbufferentrada();
 
                 printf("Minutos:");
-                fgets(compromisso[max_compromissos].minutos, max_letras, stdin);
+                scanf("%d", &agenda[total_compromissos].minutos);
+                limparbufferentrada();
 
                 printf("\nCompromisso agendado com sucesso!\n\n");
+
+                total_compromissos++;
+
                 }
+                break;
             case 2:
 
                 if(total_compromissos == 0){
-                    printf("Não há compromissos agendados :(");
+                    printf("\nNão há compromissos agendados :(\n\n");
                     break;
                 }else{
-                    printf("\nAgenda de compromissos\n\n");
+                    printf("\nAgenda\n\n");
                     for(int i = 0; i < total_compromissos; i++){
-                        printf("%s às %d:%d\n", compromisso[max_compromissos].data,
-                        compromisso[max_compromissos].horas, 
-                        compromisso[max_compromissos].minutos);
-                        printf("%s\n\n", compromisso[max_compromissos].descrição);
+                        printf("%s às %02d:%02d\n", agenda[i].data,
+                        agenda[i].horas, 
+                        agenda[i].minutos);
+                        printf("%s\n\n", agenda[i].descrição);
                     }
                 }
 
