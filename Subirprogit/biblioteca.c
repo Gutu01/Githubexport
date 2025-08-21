@@ -67,7 +67,7 @@ int main(){
             printf("\nNão há livros registrados!\n\n");
         }else{
             
-            printf("Lista de livros\n\n");
+            printf("\nLista de livros\n\n");
 
         for(int i=0; i < total_livros; i++){
             printf("Nome: %s", biblioteca[i].nome);
