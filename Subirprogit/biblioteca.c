@@ -1,7 +1,8 @@
 //Lista de melhorias:
 //1ºAprimorar o código para ficar como protótipo
 //para minha antiga escola;
-//2ºFazer comentários do projéto.
+//2ºFazer comentários do projéto;
+//3ºFazer menus melhores.
 
 #include <stdio.h>
 
