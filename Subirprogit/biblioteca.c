@@ -1,8 +1,9 @@
-//Lista de melhorias:
+//Lista para melhorias:
 //1ºAprimorar o código para ficar como protótipo
 //para minha antiga escola;
 //2ºFazer comentários do projéto;
-//3ºFazer menus melhores.
+//3ºFazer menus melhores;
+//4ºFazer o código "a prova" de erros de digitação.
 
 #include <stdio.h>
 
@@ -41,10 +42,12 @@ int main(){
 
     switch(escolha){
         case 1:
-        printf("\nO cadastro de livro foi iniciado.\n\n");
+
         if(total_livros >= max_livros){
-            printf("Limite de livros atingido.\n");
+            printf("\nLimite de livros atingido.\n\n");
+            break;
         } else {
+        printf("\nO cadastro de livro foi iniciado.\n\n");
         printf("Qual o nome do livro?\nresposta:");
         fgets(biblioteca[total_livros].nome, max_letras, stdin);
         
