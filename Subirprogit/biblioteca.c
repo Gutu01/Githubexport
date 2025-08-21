@@ -1,3 +1,8 @@
+//Lista de melhorias:
+//1ºAprimorar o código para ficar como protótipo
+//para minha antiga escola;
+//2ºFazer comentários do projéto.
+
 #include <stdio.h>
 
 #define max_livros 50
@@ -42,7 +47,7 @@ int main(){
         printf("Qual o nome do livro?\nresposta:");
         fgets(biblioteca[total_livros].nome, max_letras, stdin);
         
-        printf("Qual o nome do autor?\nresposta:");
+        printf("Qual o nome do autor(a)?\nresposta:");
         fgets(biblioteca[total_livros].autor, max_letras, stdin);
         
         printf("Qual a cor da capa do livro?\nresposta:");
