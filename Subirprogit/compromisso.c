@@ -1,7 +1,11 @@
 //Lista para melhorias:
-//1ºIntegrar o sistema de tempo faltando de um outro projéto meu para cá.
+//1ºIntegrar o sistema de tempo faltando de um outro projéto meu para cá;
+//2ºFazer as entradas "a prova" de erros;
+//3ºfazer menus mais bonitos;
+//4ºFazer comentários no projéto.
 
 #include <stdio.h>
+#include <string.h>
 
 #define max_letras 5600
 #define max_compromissos 30
