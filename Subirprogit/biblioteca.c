@@ -3,7 +3,8 @@
 //para minha antiga escola;
 //2ºFazer comentários do projéto;
 //3ºFazer menus melhores;
-//4ºFazer o código "a prova" de erros de digitação.
+//4ºFazer o código "a prova" de erros de digitação;
+//5ºLimpar o buffer do getchar.
 
 #include <stdio.h>
 
