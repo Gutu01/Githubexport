@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Abrir teste.html",
+            "url": "file:///home/gustavomt058/Githubexport/Githubexport/Subirprogit/teste.html",
+            "runtimeExecutable": "/usr/bin/chromium-browser"
+        }
+    ]
+}
