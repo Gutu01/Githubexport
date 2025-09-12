@@ -59,7 +59,7 @@ int main(){
     }
 
     printf("\n*Mapa dos territórios*\n\n");
-
+    
     for(int i = 0; i < 5; i++){
 
         
