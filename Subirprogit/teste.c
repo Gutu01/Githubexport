@@ -1,8 +1,11 @@
 #include <stdio.h>
+#include <locale.h>
 
 int main(){
 
-    printf("Ol√° mundo!\n\n");
+    setlocale(LC_ALL, "Portuguese");
+
+    printf("Ol· mundo!\n\n");
 
     return 0;
 }
