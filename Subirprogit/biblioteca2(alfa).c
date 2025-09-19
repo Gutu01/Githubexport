@@ -48,7 +48,7 @@ int main() {
 
     //Usamos calloc para o array de livros. calloc(num_elementos, tamanho_de_cada_elemento)
     //Vantagem: inicializa toda a memória com zeros. Isso significa que 'disponivel' já começa com...
-    biblioteca = (struct Livro *) calloc(MAX_LIVROS, sizeof(struct Livro));
+    biblioteca = (struct Livro *) malloc(MAX_LIVROS, sizeof(struct Livro));
 
     // Usamos malloc para o array de empréstimos. mallox(tamanho_total_em_bytes)
     emprestimos = (struct Emprestimo *) malloc(MAX_EMPRESTIMOS * sizeof(struct Emprestimo));

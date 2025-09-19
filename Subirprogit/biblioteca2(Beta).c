@@ -34,6 +34,8 @@ int main(){
 
     Biblioteca *livro;
     Emprestimo *emprestimo;
+ 
+    livro = (Biblioteca *) calloc(max_livros, sizeof(Biblioteca));
 
     int opcao, total_livros=0;
 
@@ -58,7 +60,7 @@ int main(){
                         printf("\nO número máximo de livro foi atingido!\n\n");
                         break;
                     } else {
-                        printf("n");
+                        printf("");
                     }
             }
     }while (opcao != 0);
