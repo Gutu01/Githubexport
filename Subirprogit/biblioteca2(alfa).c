@@ -1,6 +1,6 @@
 // ===========================================================================
 // PRÁTICA: SISTEMA DE BIBLIOTECA - PARTE 2
-// 
+// teste 1
 // OBJETIVO DESTA PARTE:
 // Adicionar a funcionalidade de empréstimo e introduzir alocação dinâmica.
 // - Os arrays de livros e empréstimos são alocados com malloc/calloc.
