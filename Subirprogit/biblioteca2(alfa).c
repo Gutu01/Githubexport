@@ -166,7 +166,7 @@ int main() {
                             totalemprestimos++;
                             printf("\nemprestimo realizado com sucesso!\n");
                         } else {
-                            printf("\nNúmero de livro inválido ouu livro indisponível.\n");
+                            printf("\nNúmero de livro inválido ou livro indisponível.\n");
                         }
                     }
                 }

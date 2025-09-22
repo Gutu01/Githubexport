@@ -22,6 +22,7 @@ typedef struct{
 
     int indice_livro;
     char nome_usuario[max_string];
+
 }Emprestimo;
 
 
@@ -48,7 +49,7 @@ int main(){
 
     do{
 
-        printf("=========================\n");
+        printf("\n=========================\n");
         printf("   Biblioteca(Beta2)\n");
         printf("=========================\n");
         printf("1 - Resgistrar livro\n");
@@ -64,7 +65,7 @@ int main(){
 
                 case 1:
 
-                    if(total_livros == max_livros)
+                    if(total_livros >= max_livros)
                         printf("\nO número máximo de livro foi atingido!\n\n");    
                     else {
                         printf("\nNome do livro:");
@@ -109,6 +110,39 @@ int main(){
                     break;
                 
                 case 3:
+                    
+                    if(total_emprestimos >= max_emprestimos)
+                        printf("\nO número máximo de empréstimos foi atingido!\n\n");
+                    else{
+                        
+                        int escolha=0;
+
+                        printf("Livros disponíveis:\n\n");
+
+                        for(i=0; i < total_livros; i++){
+
+                            if(livro[i].disponivel){
+                                printf("%d - %s\n", i + 1, livro[i].nome);
+                            }
+                        }
+                        
+                        printf("Escolha o número do livro:");
+                        scanf("%d", &escolha);
+                        limparbufferentrada();
+
+                        escolha --;
+
+                        if(livro[escolha].disponivel == 1 && escolha >= 0){
+                            printf("Insira seu nome: ");
+                            fgets(emprestimo[escolha].nome_usuario, max_string, stdin);
+                            emprestimo[escolha].nome_usuario[strcspn(emprestimo[escolha].nome_usuario, "\n")] = '\0';
+
+                            total_emprestimos++;
+                        }else{
+                            printf("\nLivro inválido!\n\n");
+                        }
+                        break;
+                    }
                     
             }
     }while (opcao != 0);
