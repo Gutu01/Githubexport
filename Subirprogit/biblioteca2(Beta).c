@@ -55,7 +55,7 @@ int main(){
         printf("2 - Listar livros\n");
         printf("3 - Pedir empréstimo\n");
         printf("4 - Listar empréstimos\n");
-        printf("0 - sair\n");
+        printf("0 - Sair\n");
         printf("Resposta:");
         scanf("%d", &opcao);
         limparbufferentrada();
@@ -89,6 +89,26 @@ int main(){
                     }
                     break;
 
+                case 2:
+
+                    if(total_livros == 0)
+                        printf("\nNão há livros na biblioteca!\n\n");
+                    else{
+                        for(i=0; i < total_livros; i++){
+                            printf("\n%dº livro:\n", i +1);
+                            printf("Nome: %s\n", livro[i].nome);
+                            printf("Autor(a): %s\n", livro[i].autor);
+                            printf("Editora: %s\n", livro[i].editora);
+                            printf("%dª edição\n", livro[i].edicao);
+                            if(livro[i].disponivel == 1)
+                                printf("Status: Disponível\n\n");
+                            else
+                                printf("Status: Indisponível\n\n");
+                        }
+                    }
+                    break;
+                
+                case 3:
                     
             }
     }while (opcao != 0);
