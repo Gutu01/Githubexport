@@ -58,19 +58,38 @@ int main(){
         printf("0 - sair\n");
         printf("Resposta:");
         scanf("%d", &opcao);
+        limparbufferentrada();
 
             switch (opcao){
 
                 case 1:
 
-                    if(total_livros > max_livros){
-                        printf("\nO número máximo de livro foi atingido!\n\n");
-                        break;
-                    } else {
-                        printf("\nNome do liveo: ");
+                    if(total_livros == max_livros)
+                        printf("\nO número máximo de livro foi atingido!\n\n");    
+                    else {
+                        printf("\nNome do livro:");
                         fgets(livro[total_livros].nome, max_string, stdin);
                         livro[total_livros].nome[strcspn(livro[total_livros].nome, "\n")] = '\0';
+
+                        printf("Autor:");
+                        fgets(livro[total_livros].autor, max_string, stdin);
+                        livro[total_livros].autor[strcspn(livro[total_livros].autor, "\n")] = '\0';
+
+                        printf("Editora:");
+                        fgets(livro[total_livros].editora, max_string, stdin);
+                        livro[total_livros].editora[strcspn(livro[total_livros].editora, "\n")] = '\0';
+
+                        printf("Edição:");
+                        scanf("%d", &livro[total_livros].edicao);
+                        limparbufferentrada();
+
+                        livro[total_livros].disponivel = 1;
+
+                        total_livros++;
                     }
+                    break;
+
+                    
             }
     }while (opcao != 0);
 
