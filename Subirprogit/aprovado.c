@@ -23,12 +23,12 @@ void limparbufferentrada(){
 int main(){
 
     Aluno aluno[max_registros];
-    int total_alunos=0;
+    int total_alunos=0, i;
     float maior_nota_primeira_prova=0;
     float maior_media_geral=0;
     float menor_media_geral=1000;
 
-    for(int i=0; i < max_registros; i++){
+    for(i=0; i < max_registros; i++){
         printf("\n%dº aluno:\n", i+1);
         printf("Número da matricula:");
         scanf("%d", &aluno[total_alunos].matricula);
@@ -62,7 +62,7 @@ int main(){
         total_alunos++;
     }
 
-    for(int i=0;i < max_registros; i++){
+    for(i=0;i < max_registros; i++){
         printf("\n%dº aluno:\n", i+1);
         printf("Matrícula:%d\n", aluno[i].matricula);
         printf("Nome:%s\n", aluno[i].nome);

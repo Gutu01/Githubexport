@@ -46,11 +46,11 @@ int main() {
     struct Livro *biblioteca;
     struct Emprestimo *emprestimos;
 
-    //Usamos calloc para o array de livros. calloc(num_elementos, tamanho_de_cada_elemento)
-    //Vantagem: inicializa toda a memória com zeros. Isso significa que 'disponivel' já começa com...
-    biblioteca = (struct Livro *) malloc(MAX_LIVROS, sizeof(struct Livro));
+    // Usamos calloc para o array de livros. calloc(num_elementos, tamanho_de_cada_elemento)
+    // Vantagem: inicializa toda a memória com zeros. Isso significa que 'disponivel' já começa com...
+    biblioteca = (struct Livro *) calloc(MAX_LIVROS, sizeof(struct Livro));
 
-    // Usamos malloc para o array de empréstimos. mallox(tamanho_total_em_bytes)
+    // Usamos malloc para o array de empréstimos. malloc(tamanho_total_em_bytes)
     emprestimos = (struct Emprestimo *) malloc(MAX_EMPRESTIMOS * sizeof(struct Emprestimo));
 
     // VERIFICAÇÃO: É crucial verificar se a aloxação de memória deu certo.

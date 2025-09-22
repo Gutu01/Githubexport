@@ -21,9 +21,9 @@ void limparbufferentrada(){
 int main(){
 
     Aluno aluno[max_alunos];
-    int total_alunos=0;
+    int total_alunos=0, i;
 
-    for(int i=0; i < max_alunos; i++){
+    for(i=0; i < max_alunos; i++){
 
         printf("\n%dº aluno\n", i+1);
         printf("Nome:");
@@ -41,7 +41,7 @@ int main(){
         total_alunos++;
     }
 
-    for(int i=0; i < total_alunos;i++){
+    for(i=0; i < total_alunos;i++){
         printf("\n%dº cadastro:\n", i+1);
         printf("Nome:%s\n", aluno[i].nome);
         printf("Número de matricula:%d\n", aluno[i].matricula);
