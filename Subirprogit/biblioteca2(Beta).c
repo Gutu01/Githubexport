@@ -5,7 +5,7 @@
 
 #define max_livros 5
 #define max_string 100
-
+#define max_emprestimos 5
 
 typedef struct{
 
@@ -37,10 +37,15 @@ int main(){
     Emprestimo *emprestimo;
  
     livro = (Biblioteca *) calloc(max_livros, sizeof(Biblioteca));
+    emprestimo = (Emprestimo *) calloc(max_emprestimos, sizeof(Emprestimo));
 
-    int opcao, total_livros=0;
-
+    int opcao, total_livros=0, i, total_emprestimos=0;
     
+    if(livro == NULL || emprestimo == NULL){
+        printf("Erro na alocação de memória!\n\n");
+        return 1;
+    }
+
     do{
 
         printf("=========================\n");
@@ -50,6 +55,7 @@ int main(){
         printf("2 - Listar livros\n");
         printf("3 - Pedir empréstimo\n");
         printf("4 - Listar empréstimos\n");
+        printf("0 - sair\n");
         printf("Resposta:");
         scanf("%d", &opcao);
 
@@ -61,7 +67,9 @@ int main(){
                         printf("\nO número máximo de livro foi atingido!\n\n");
                         break;
                     } else {
-                        printf("");
+                        printf("\nNome do liveo: ");
+                        fgets(livro[total_livros].nome, max_string, stdin);
+                        livro[total_livros].nome[strcspn(livro[total_livros].nome, "\n")] = '\0';
                     }
             }
     }while (opcao != 0);
