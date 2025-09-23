@@ -155,7 +155,7 @@ int main(){
                     if(total_emprestimos == 0)
                         printf("\nNão há nenhum emprestimo!\n");
                     else{
-                        for(i=0; i < total_emprestimos; i++){
+                        for(i=0; i < total_livros; i++){
                             if(livro[i].disponivel == 0){
                                 printf("\n%s\n", livro[i].nome);
                                 printf("está com %s\n", emprestimo[i].nome_usuario);
@@ -163,8 +163,15 @@ int main(){
                         }
                     } 
                     break;
+                
+                default:
+                    printf("\nOpção inválida!\n");
+                    break;
             }
     }while (opcao != 0);
+
+    free (livro);
+    free (emprestimo);
 
     return 0;
 }
