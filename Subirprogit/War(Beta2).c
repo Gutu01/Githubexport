@@ -33,7 +33,7 @@ int main(){
             printf("\nSaindo\n\n");
             return 1;
         }else if(jogadores<3 || jogadores>6)
-            printf("\nnúmero de jogadores inválido!\n");
+            printf("\nNúmero de jogadores inválido!\n");
     }while (jogadores<3 || jogadores>6);
 
     
