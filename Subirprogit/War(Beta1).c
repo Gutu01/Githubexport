@@ -27,7 +27,7 @@ void limparbufferentrada(){
 int main(){
 
     war dados_jogo[max_jogadores];
-    int escolha;
+    int escolha, i;
 
     printf("Vamos começar o jogo?\n");
     printf("0-Sair\n1-Jogar\nEscolha:");
@@ -41,7 +41,7 @@ int main(){
 
     printf("Insira 5 territórios para começar\n");
 
-    for(int i = 0;i < 5; i++){
+    for(i = 0;i < 5; i++){
 
         printf("\n%dº território\n", i + 1);
         printf("Nome do território:");
@@ -60,7 +60,7 @@ int main(){
 
     printf("\n*Mapa dos territórios*\n\n");
     
-    for(int i = 0; i < 5; i++){
+    for(i = 0; i < 5; i++){
 
         
         printf("%dº território\n", i +1);
