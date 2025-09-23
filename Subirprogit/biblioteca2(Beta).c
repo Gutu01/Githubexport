@@ -1,4 +1,4 @@
-//teste1
+//teste2
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -40,7 +40,7 @@ int main(){
     livro = (Biblioteca *) calloc(max_livros, sizeof(Biblioteca));
     emprestimo = (Emprestimo *) calloc(max_emprestimos, sizeof(Emprestimo));
 
-    int opcao, total_livros=0, i, total_emprestimos=0;
+    int opcao, total_livros=0, i, total_emprestimos=0, livros_disponiveis=0;
     
     if(livro == NULL || emprestimo == NULL){
         printf("Erro na alocação de memória!\n\n");
@@ -66,7 +66,7 @@ int main(){
                 case 1:
 
                     if(total_livros >= max_livros)
-                        printf("\nO número máximo de livro foi atingido!\n\n");    
+                        printf("\nO número máximo de livro foi atingido!\n");    
                     else {
                         printf("\nNome do livro:");
                         fgets(livro[total_livros].nome, max_string, stdin);
@@ -87,13 +87,14 @@ int main(){
                         livro[total_livros].disponivel = 1;
 
                         total_livros++;
+                        livros_disponiveis++;
                     }
                     break;
 
                 case 2:
 
                     if(total_livros == 0)
-                        printf("\nNão há livros na biblioteca!\n\n");
+                        printf("\nNão há livros na biblioteca!\n");
                     else{
                         for(i=0; i < total_livros; i++){
                             printf("\n%dº livro:\n", i +1);
@@ -112,12 +113,14 @@ int main(){
                 case 3:
                     
                     if(total_emprestimos >= max_emprestimos)
-                        printf("\nO número máximo de empréstimos foi atingido!\n\n");
-                    else{
+                        printf("\nO número máximo de empréstimos foi atingido!\n");
+                    else if(livros_disponiveis == 0) 
+                        printf("\nNão há livros para serem emprestados!\n");
+                    else {
                         
                         int escolha=0;
 
-                        printf("Livros disponíveis:\n\n");
+                        printf("\nLivros disponíveis:\n\n");
 
                         for(i=0; i < total_livros; i++){
 
@@ -137,13 +140,29 @@ int main(){
                             fgets(emprestimo[escolha].nome_usuario, max_string, stdin);
                             emprestimo[escolha].nome_usuario[strcspn(emprestimo[escolha].nome_usuario, "\n")] = '\0';
 
+                            livro[escolha].disponivel = 0;
+
                             total_emprestimos++;
+                            livros_disponiveis--;
                         }else{
                             printf("\nLivro inválido!\n\n");
                         }
-                        break;
                     }
-                    
+                    break;
+
+                case 4:
+
+                    if(total_emprestimos == 0)
+                        printf("\nNão há nenhum emprestimo!\n");
+                    else{
+                        for(i=0; i < total_emprestimos; i++){
+                            if(livro[i].disponivel == 0){
+                                printf("\n%s\n", livro[i].nome);
+                                printf("está com %s\n", emprestimo[i].nome_usuario);
+                            }
+                        }
+                    } 
+                    break;
             }
     }while (opcao != 0);
 
