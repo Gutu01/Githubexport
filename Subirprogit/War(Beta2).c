@@ -14,7 +14,7 @@ typedef struct{
 
 }Dados;
 
-int aleatorio(int *rola_dado1, int *rola_dado2){
+void aleatorio(int *rola_dado1, int *rola_dado2){
     *rola_dado1 = rand() % 6 + 1;
     *rola_dado2 = rand() % 6 + 1;
 }
@@ -28,13 +28,16 @@ int main(){
 
     int jogadores=0, i, total_jogadores=0, escolha=0, defensor=0, resultado1=0, resultado2=0;
 
-    aleatorio(&resultado1, &resultado2);
-
     srand(time(NULL));
 
     Dados *dados;
 
     dados = (Dados *) calloc(6, sizeof(Dados));
+
+    if(dados == NULL){
+        printf("\nERRO não alocação de memória dinâmica!\n\n");
+        return 1;
+    }
 
     do{
         printf("\nInsira o número de jogadores ou 0 para sair (3-6 jogadores): ");
@@ -107,6 +110,9 @@ int main(){
         escolha--;
         defensor--;
 
+        
+        aleatorio(&resultado1, &resultado2);
+        
         printf("%s, pressione ENTER para rolar o dado", dados[escolha].nome);
         getchar();
 
@@ -119,7 +125,25 @@ int main(){
         printf("%s, tirou %d",dados[defensor].nome, resultado2);
         getchar();
 
+        if(resultado1 > resultado2){
 
+            dados[defensor].num_tropas--;
+            printf("%s perdeu 1 tropa!", dados[defensor].nome);
+            getchar();
+
+        } else if (resultado1 < resultado2){
+
+            dados[escolha].num_tropas--;
+            printf("%s perdeu 1 tropa!", dados[escolha].nome);
+            getchar();
+
+        } else {
+
+            dados[defensor].num_tropas--;
+            printf("%s perdeu 1 tropa!", dados[defensor].nome);
+            getchar();
+        
+        }
 
     }while (total_jogadores != 1 || escolha != 0);
 
