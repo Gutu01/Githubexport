@@ -14,12 +14,9 @@ typedef struct{
 
 }Dados;
 
-void aleatorio(){
-    int aleatorio, i;
-
-    srand(time(NULL));
-
-    aleatorio = rand() % 6 + 1;
+int aleatorio(int *rola_dado1, int *rola_dado2){
+    *rola_dado1 = rand() % 6 + 1;
+    *rola_dado2 = rand() % 6 + 1;
 }
 
 void limparbufferentrada(){
@@ -29,14 +26,18 @@ void limparbufferentrada(){
 
 int main(){
 
-    int jogadores=0, i, total_jogadores=0;
+    int jogadores=0, i, total_jogadores=0, escolha=0, defensor=0, resultado1=0, resultado2=0;
+
+    aleatorio(&resultado1, &resultado2);
+
+    srand(time(NULL));
 
     Dados *dados;
 
     dados = (Dados *) calloc(6, sizeof(Dados));
 
     do{
-        printf("\nInsira o número de jogadores ou 0 para sair: ");
+        printf("\nInsira o número de jogadores ou 0 para sair (3-6 jogadores): ");
         scanf("%d", &jogadores);
         limparbufferentrada();
 
@@ -67,16 +68,62 @@ int main(){
 
     do{
         
-    printf("\n\nMapa de War\n\n");
+        printf("\n\nMapa de War\n\n");
 
-    for(i=0; i < jogadores; i++){
-        printf("%d - %s (cor %s, %d tropas)\n", i + 1, dados[i].nome, dados[i].cor, dados[i].num_tropas);
-    }
+        for(i=0; i < jogadores; i++){
+            printf("%d - %s (cor %s, %d tropas)\n", i + 1, dados[i].nome, dados[i].cor, dados[i].num_tropas);
+        }
 
-    printf("\nTurno de ataque\n");
-    printf("Escolha um atacante");
-    }while (total_jogadores != 1);
+            printf("\nTurno de ataque\n");
+        do{
+            
+            printf("\nEscolha um atacante (1-%d, ou 0 para sair): ", jogadores);
+            scanf("%d", &escolha);
+            limparbufferentrada();
 
+            if(escolha == 0){
+                printf("\nSaindo do programa\n\n");
+                return 0;
+            }
+            else if(escolha < 0 || escolha > jogadores)
+                printf("Escolha Inválida");
+        }while (escolha < 0 || escolha > jogadores);
+        
+        do{
+            printf("\nEscolha um defensor (0 para sair): ");
+            scanf("%d", &defensor);
+            limparbufferentrada();
+
+            if(defensor == 0){
+                printf("\nSaindo do programa!\n\n");
+                return 0;
+            }
+            else if(escolha == defensor || defensor < 0 || defensor > jogadores)
+                printf("\nEscolha inválida!\n");
+
+        }while (escolha == defensor || defensor < 1 || defensor > jogadores);
+
+        //Isso cerve para encaixar nos arrays
+        escolha--;
+        defensor--;
+
+        printf("%s, pressione ENTER para rolar o dado", dados[escolha].nome);
+        getchar();
+
+        printf("%s, tirou %d",dados[escolha].nome, resultado1);
+        getchar();
+
+        printf("%s, pressione ENTER para rolar o dado", dados[defensor].nome);
+        getchar();
+
+        printf("%s, tirou %d",dados[defensor].nome, resultado2);
+        getchar();
+
+
+
+    }while (total_jogadores != 1 || escolha != 0);
+
+   
     free(dados);
 
     return 0;
