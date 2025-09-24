@@ -14,6 +14,14 @@ typedef struct{
 
 }Dados;
 
+void aleatorio(){
+    int aleatorio, i;
+
+    srand(time(NULL));
+
+    aleatorio = rand() % 6 + 1;
+}
+
 void limparbufferentrada(){
     int c;
     while (( c = getchar ()) != '\n' && c != EOF);
@@ -21,7 +29,7 @@ void limparbufferentrada(){
 
 int main(){
 
-    int jogadores=0, i;
+    int jogadores=0, i, total_jogadores=0;
 
     Dados *dados;
 
@@ -39,6 +47,8 @@ int main(){
             printf("\nNúmero de jogadores inválido!\n");
     }while (jogadores<3 || jogadores>6);
 
+    total_jogadores = jogadores;
+    
     for(i=0; i < jogadores; i++){
 
         printf("\nNome do %dº território: ", i+1);
@@ -55,6 +65,8 @@ int main(){
         
     }
 
+    do{
+        
     printf("\n\nMapa de War\n\n");
 
     for(i=0; i < jogadores; i++){
@@ -63,7 +75,8 @@ int main(){
 
     printf("\nTurno de ataque\n");
     printf("Escolha um atacante");
-    
+    }while (total_jogadores != 1);
+
     free(dados);
 
     return 0;
