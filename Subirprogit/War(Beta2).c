@@ -51,6 +51,8 @@ int main(){
             printf("\nNúmero de jogadores inválido!\n");
     }while (jogadores<3 || jogadores>6);
     
+    free(dados);
+
     for(i=0; i < jogadores; i++){
 
         printf("\nNome do %dº território: ", i+1);
@@ -149,25 +151,31 @@ int main(){
 
             dados[escolha].num_tropas++;
             //O strcpy é um comando para atribuir uma string em outra. strscpy(destino, origem);
+            printf("\n%s obteve o território de %s e ganhou 1 tropa!\n\n", dados[defensor].nome, dados[escolha].nome);
             strcpy(dados[escolha].nome, dados[defensor].nome);
             strcpy(dados[escolha].cor, dados[defensor].cor);
-            printf("\n%s obteve o território de %s e ganhou 1 tropa!\n\n", dados[defensor].nome, dados[escolha].nome);
 
         } else if (dados[defensor].num_tropas == 0){
 
             dados[defensor].num_tropas++;
+            printf("\n%s obteve o território de %s e ganhou 1 tropa!\n\n", dados[escolha].nome, dados[defensor].nome);
             strcpy(dados[defensor].nome, dados[escolha].nome);
             strcpy(dados[defensor].cor, dados[escolha].cor);
-            printf("\n%s obteve o território de %s e ganhou 1 tropa!\n\n", dados[escolha].nome, dados[defensor].nome);
 
         }
 
-        
+        for(i=1; i <= jogadores - 1; i++){
 
-    }while (total_jogadores == jogadores || escolha != 0);
+            //strcmp compara se o primeiro valor vem antes ou depois em ordem alfabetica, se o primeiro intem vier antes
+            //então retornará um número < 0. Se ele vier depois então será maior que zero. Se as palavras são iguais 
+            //então retorna 0. strcmp(A,B);
+            if(strcmp(dados[0].nome, dados[i].nome) == 0){
+                total_jogadores++;
+            }
+        }
+    }while (total_jogadores != jogadores);
 
-   
-    free(dados);
+    printf("\n\nO exercíto %s conquistou todos os territórios\nParabéns %s", dados[0].cor, dados[0].nome);
 
     return 0;
 }
