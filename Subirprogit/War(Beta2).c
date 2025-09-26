@@ -50,8 +50,6 @@ int main(){
         }else if(jogadores<3 || jogadores>6)
             printf("\nNúmero de jogadores inválido!\n");
     }while (jogadores<3 || jogadores>6);
-
-    total_jogadores = jogadores;
     
     for(i=0; i < jogadores; i++){
 
@@ -71,6 +69,8 @@ int main(){
 
     do{
         
+        total_jogadores = 1;
+
         printf("\n\nMapa de War\n\n");
 
         for(i=0; i < jogadores; i++){
@@ -145,7 +145,35 @@ int main(){
         
         }
 
-    }while (total_jogadores != 1 || escolha != 0);
+        if(dados[escolha].num_tropas == 0){
+
+            dados[escolha].num_tropas++;
+            //O strcpy é um comando para atribuir uma string em outra. strscpy(destino, origem);
+            strcpy(dados[escolha].nome, dados[defensor].nome);
+            strcpy(dados[escolha].cor, dados[defensor].cor);
+            printf("\n%s obteve o território de %s e ganhou 1 tropa!\n\n", dados[defensor].nome, dados[escolha].nome);
+
+        } else if (dados[defensor].num_tropas == 0){
+
+            dados[defensor].num_tropas++;
+            strcpy(dados[defensor].nome, dados[escolha].nome);
+            strcpy(dados[defensor].cor, dados[escolha].cor);
+            printf("\n%s obteve o território de %s e ganhou 1 tropa!\n\n", dados[escolha].nome, dados[defensor].nome);
+
+        }
+
+        for(i=0; i < jogadores; i++){
+            printf("================");
+            int ii = i +1;
+            //strcmp compara se o primeiro valor vem antes ou depois em ordem alfabetica, se o primeiro intem vier antes
+            //então retornará um número < 0. Se ele vier depois então será maior que zero. Se as palavras são iguais 
+            //então retorna 0. strcmp(A,B);
+            if(strcmp(dados[i].nome, dados[ii].nome))
+                total_jogadores++;
+
+        }
+
+    }while (total_jogadores == jogadores || escolha != 0);
 
    
     free(dados);
