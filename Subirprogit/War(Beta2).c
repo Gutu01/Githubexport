@@ -162,16 +162,7 @@ int main(){
 
         }
 
-        for(i=0; i < jogadores; i++){
-            printf("================");
-            int ii = i +1;
-            //strcmp compara se o primeiro valor vem antes ou depois em ordem alfabetica, se o primeiro intem vier antes
-            //então retornará um número < 0. Se ele vier depois então será maior que zero. Se as palavras são iguais 
-            //então retorna 0. strcmp(A,B);
-            if(strcmp(dados[i].nome, dados[ii].nome))
-                total_jogadores++;
-
-        }
+        
 
     }while (total_jogadores == jogadores || escolha != 0);
 
