@@ -7,13 +7,15 @@ void somar(float a, float b){
 
 int main(){
 
-    int num1, num2;
+    float num1, num2;
 
     printf("Digite o primeiro número: ");
-    scanf("%d", &num1);
+    scanf("%f", &num1);
 
     printf("Digite o primeiro número: ");
-    scanf("%d", &num2);
+    scanf("%f", &num2);
 
     somar(num1, num2);
+
+    return 0;
 }
