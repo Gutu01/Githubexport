@@ -1,4 +1,3 @@
-//teste2
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -101,7 +100,7 @@ int main(){
                             printf("Nome: %s\n", livro[i].nome);
                             printf("Autor(a): %s\n", livro[i].autor);
                             printf("Editora: %s\n", livro[i].editora);
-                            printf("%dª edição\n", livro[i].edicao);
+                            printf("%dº edição\n", livro[i].edicao);
                             if(livro[i].disponivel == 1)
                                 printf("Status: Disponível\n\n");
                             else
@@ -153,7 +152,7 @@ int main(){
                 case 4:
 
                     if(total_emprestimos == 0)
-                        printf("\nNão há nenhum emprestimo!\n");
+                        printf("\nNão há nenhum empréstimo!\n");
                     else{
                         for(i=0; i < total_livros; i++){
                             if(livro[i].disponivel == 0){
