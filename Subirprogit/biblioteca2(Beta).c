@@ -13,6 +13,7 @@ typedef struct{
     char editora[max_string];
     int edicao;
     int disponivel;
+    
 
 }Biblioteca;
 
